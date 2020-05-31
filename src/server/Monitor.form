@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="server.Monitor">
+  <grid id="27dc6" binding="mainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="500"/>
+    </constraints>
+    <properties>
+      <minimumSize width="500" height="500"/>
+      <name value="mainPanel"/>
+      <preferredSize width="500" height="500"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="3923" binding="titlePanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints border-constraint="North"/>
+        <properties>
+          <name value="titlePanel"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="98131" class="javax.swing.JLabel" binding="lblName">
+            <constraints/>
+            <properties>
+              <name value="lblName"/>
+              <text value="Registro de eventos"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="973f7" binding="logPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <name value="logPanel"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="a9f5a" class="javax.swing.JTextPane" binding="txtConsole">
+            <constraints border-constraint="Center"/>
+            <properties>
+              <name value="txtConsole"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="19627" binding="statusPanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
+        <constraints border-constraint="South"/>
+        <properties>
+          <name value="statusPanel"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="b20be" class="javax.swing.JProgressBar" binding="progressBar">
+            <constraints/>
+            <properties>
+              <name value="progressBar"/>
+              <stringPainted value="false"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
