@@ -45,8 +45,8 @@ public class ClientThread extends Thread {
 
     /**
      * ClientThread class constructor.
-     * @param socket
-     * @param server
+     * @param socket the socket to establish communication with the server.
+     * @param server the target chat server.
      */
     public ClientThread(Socket socket, Server server) {
         this.server = server;
@@ -113,7 +113,7 @@ public class ClientThread extends Thread {
     /**
      * Performs specific tasks depending on the socket's input and output parameters.
      * 1 indicates the transmitter client, 2 indicates the receiver client and 3 indicates a specific client message.
-     * @param list
+     * @param list the client list.
      */
     public void execute(LinkedList<String> list){
         String type = list.get(0);
@@ -136,7 +136,7 @@ public class ClientThread extends Thread {
 
     /**
      * Sends a specific message through the socket.
-     * @param list
+     * @param list the object list.
      */
     private void sendMessage(LinkedList<String> list){
         try {
@@ -149,7 +149,7 @@ public class ClientThread extends Thread {
 
     /**
      * Notifies to each connected client the existence of a new incoming client.
-     * @param id
+     * @param id the target client ID for establishing communication.
      */
     private void acceptConnection(String id) {
         correlative = Server.getCorrelative() + 1;
@@ -174,8 +174,8 @@ public class ClientThread extends Thread {
     }
 
     /**
-     * Returns the unique client id in the chat.
-     * @return
+     * Returns the unique client ID in the chat.
+     * @return the unique client ID.
      */
     public String getIdClient() {
         return idClient;

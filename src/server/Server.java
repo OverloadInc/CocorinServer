@@ -35,8 +35,8 @@ public class Server extends Thread {
 
     /**
      * Server class constructor.
-     * @param port
-     * @param monitor
+     * @param port the target port.
+     * @param monitor the target component to display the resulting messages.
      */
     public Server(String port, Monitor monitor) {
         correlative = 0;
@@ -49,7 +49,7 @@ public class Server extends Thread {
 
     /**
      * Returns the correlative.
-     * @return
+     * @return the unique client ID.
      */
     public static int getCorrelative() {
         return correlative;
@@ -81,8 +81,8 @@ public class Server extends Thread {
     }
 
     /**
-     * Returns a list of connected client ids.
-     * @return
+     * Returns a list of connected client IDs.
+     * @return the list of connected users.
      */
     LinkedList<String> getConnectedUsers() {
         LinkedList<String> connectedUsers = new LinkedList<>();
@@ -94,7 +94,7 @@ public class Server extends Thread {
 
     /**
      * Adds a new line to the monitor's console.
-     * @param text
+     * @param text the message to display in the monitor's console.
      */
     void addLog(String text) {
         monitor.addLog(text);
