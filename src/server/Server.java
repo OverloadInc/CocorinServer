@@ -62,7 +62,7 @@ public class Server extends Thread {
         try {
             serverSocket = new ServerSocket(Integer.valueOf(port));
 
-            //ventana.addServidorIniciado();
+            monitor.addInitServer();
             while (true) {
                 Socket socket = serverSocket.accept();
 
@@ -97,6 +97,6 @@ public class Server extends Thread {
      * @param text
      */
     void addLog(String text) {
-        //monitor.addLog(text);
+        monitor.addLog(text);
     }
 }
