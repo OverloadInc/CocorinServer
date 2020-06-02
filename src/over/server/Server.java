@@ -1,4 +1,4 @@
-package server;
+package over.server;
 
 import java.net.ServerSocket;
 import java.net.Socket;
