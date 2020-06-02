@@ -63,6 +63,7 @@ public class Server extends Thread {
             serverSocket = new ServerSocket(Integer.valueOf(port));
 
             monitor.addInitServer();
+
             while (true) {
                 Socket socket = serverSocket.accept();
 

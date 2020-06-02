@@ -82,7 +82,7 @@ public class Monitor extends JFrame {
         logPanel.setLayout(new BorderLayout());
         logPanel.add(scrollConsole, BorderLayout.CENTER);
 
-        lblStatus.setText("Overload Inc.");
+        lblStatus.setText("Powered by Overload Inc.");
         lblStatus.setName("lblStatus");
 
         statusPanel.setName("statusPanel");

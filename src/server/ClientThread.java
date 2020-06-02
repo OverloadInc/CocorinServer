@@ -119,13 +119,13 @@ public class ClientThread extends Thread {
         String type = list.get(0);
 
         switch (type) {
-            case "SOLICITUD_CONEXION":
+            case "CONNECTION_REQUEST":
                 acceptConnection(list.get(1));
                 break;
-            case "SOLICITUD_DESCONEXION":
+            case "DISCONNECTION_REQUEST":
                 acceptDisconnection();
                 break;
-            case "MENSAJE":
+            case "MESSAGE":
                 String receiver = list.get(2);
                 server.clientList.stream().filter(h -> (receiver.equals(h.getIdClient()))).forEach((h) -> h.sendMessage(list));
                 break;
@@ -157,7 +157,7 @@ public class ClientThread extends Thread {
         this.idClient = correlative + " - " + id;
 
         LinkedList<String> incomingData = new LinkedList<>();
-        incomingData.add("CONEXION_ACEPTADA");
+        incomingData.add("ACCEPTED_CONNECTION");
         incomingData.add(this.idClient);
         incomingData.addAll(server.getConnectedUsers());
 
@@ -166,7 +166,7 @@ public class ClientThread extends Thread {
         server.addLog("\nNew client: " + this.idClient);
 
         LinkedList<String> newConnected = new LinkedList<>();
-        newConnected.add("NUEVO_USUARIO_CONECTADO");
+        newConnected.add("NEW_USER_CONNECTED");
         newConnected.add(this.idClient);
 
         server.clientList.stream().forEach(cliente -> cliente.sendMessage(newConnected));
@@ -186,7 +186,7 @@ public class ClientThread extends Thread {
      */
     private void acceptDisconnection() {
         LinkedList<String> disconnectedClient = new LinkedList<>();
-        disconnectedClient.add("USUARIO_DESCONECTADO");
+        disconnectedClient.add("USER_DISCONNECTED");
         disconnectedClient.add(this.idClient);
 
         server.addLog("\nClient \"" + this.idClient + "\" is disconnected.");
