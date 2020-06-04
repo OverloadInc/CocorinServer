@@ -56,6 +56,13 @@ public class Server extends Thread {
     }
 
     /**
+     * Increments the correlative index to make two or more users with the same name different.
+     */
+    public static void incrementCorrelative() {
+        correlative++;
+    }
+
+    /**
      * Executes the thread to listen to new user connections.
      */
     public void run() {

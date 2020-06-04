@@ -34,11 +34,6 @@ public class ClientThread extends Thread {
     private String idClient;
 
     /**
-     * Correlative to make unique each connected client even when they have the same name.
-     */
-    private static int correlative;
-
-    /**
      * Indicates if a thread is listening a specific client.
      */
     private boolean isListening;
@@ -152,9 +147,9 @@ public class ClientThread extends Thread {
      * @param id the target client ID for establishing communication.
      */
     private void acceptConnection(String id) {
-        correlative = Server.getCorrelative() + 1;
+        Server.incrementCorrelative();
 
-        this.idClient = correlative + " - " + id;
+        this.idClient = Server.getCorrelative() + " - " + id;
 
         LinkedList<String> incomingData = new LinkedList<>();
         incomingData.add("ACCEPTED_CONNECTION");
@@ -169,7 +164,7 @@ public class ClientThread extends Thread {
         newConnected.add("NEW_USER_CONNECTED");
         newConnected.add(this.idClient);
 
-        server.clientList.stream().forEach(cliente -> cliente.sendMessage(newConnected));
+        server.clientList.stream().forEach(client -> client.sendMessage(newConnected));
         server.clientList.add(this);
     }
 
