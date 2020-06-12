@@ -153,10 +153,6 @@ public class Monitor extends JFrame {
             java.util.logging.Logger.getLogger(Monitor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Monitor().setVisible(true);
-            }
-        });
+        EventQueue.invokeLater(() -> new Monitor().setVisible(true));
     }
 }
