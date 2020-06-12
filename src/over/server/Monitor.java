@@ -50,7 +50,7 @@ public class Monitor extends JFrame {
         lblStatus = new JLabel();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("JChat Client v0.1");
+        setTitle("Cocorin Server v0.1");
         setMinimumSize(new Dimension(600, 600));
         setName("frmMonitor");
         setJMenuBar(menuBar);
@@ -74,6 +74,7 @@ public class Monitor extends JFrame {
         menuBar.add(helpMenu);
 
         txtConsole.setName("txtConsole");
+        txtConsole.setEditable(false);
 
         scrollConsole.setName("scrollConsole");
         scrollConsole.setViewportView(txtConsole);
