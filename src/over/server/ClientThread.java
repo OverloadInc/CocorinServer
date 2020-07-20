@@ -1,5 +1,7 @@
 package over.server;
 
+import over.config.Configurator;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -58,7 +60,7 @@ public class ClientThread extends Thread {
             objectInputStream = new ObjectInputStream(socket.getInputStream());
         }
         catch (IOException ex) {
-            System.err.println("Error initialization of ObjectOutputStream and ObjectInputStream");
+            System.err.println(Configurator.getConfigurator().getProperty("message01"));
         }
     }
 
@@ -72,7 +74,7 @@ public class ClientThread extends Thread {
             isListening = false;
         }
         catch (IOException ex) {
-            System.err.println("Error on closing the client communication socket.");
+            System.err.println(Configurator.getConfigurator().getProperty("message02"));
         }
     }
 
@@ -85,7 +87,7 @@ public class ClientThread extends Thread {
             listen();
         }
         catch (Exception ex) {
-            System.err.println("Error on calling the client thread's readLine method.");
+            System.err.println(Configurator.getConfigurator().getProperty("message03"));
         }
 
         disconnect();
@@ -105,7 +107,7 @@ public class ClientThread extends Thread {
                     execute((LinkedList<String>)object);
             }
             catch (Exception e) {
-                System.err.println("Error on reading the current client's message.");
+                System.err.println(Configurator.getConfigurator().getProperty("message04"));
             }
         }
     }
@@ -148,7 +150,7 @@ public class ClientThread extends Thread {
             objectOutputStream.writeObject(list);
         }
         catch (Exception e) {
-            System.err.println("Error on sending the object to the client.");
+            System.err.println(Configurator.getConfigurator().getProperty("message05"));
         }
     }
 
@@ -168,7 +170,7 @@ public class ClientThread extends Thread {
 
         sendMessage(incomingData);
 
-        server.addLog("\nUser connected: ", 2);
+        server.addLog(Configurator.getConfigurator().getProperty("userConnected") + " ", 2);
         server.addLog("" + this.idClient, 1);
 
         LinkedList<String> newConnected = new LinkedList<>();
@@ -195,7 +197,7 @@ public class ClientThread extends Thread {
         disconnectedClient.add("USER_DISCONNECTED");
         disconnectedClient.add(this.idClient);
 
-        server.addLog("\nUser disconnected: ", 2);
+        server.addLog(Configurator.getConfigurator().getProperty("userDisconnected") + " ", 2);
         server.addLog("" + this.idClient, 1);
 
         this.disconnect();

@@ -1,5 +1,7 @@
 package over.server;
 
+import over.config.Configurator;
+
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.LinkedList;
@@ -80,7 +82,7 @@ public class Server extends Thread {
             while (true) {
                 Socket socket = serverSocket.accept();
 
-                addLog("\nNew incoming connection: ", 2);
+                addLog(Configurator.getConfigurator().getProperty("incomingConnection") + " ", 2);
                 addLog("" + socket, 1);
 
                 ClientThread clientThread = new ClientThread(socket, this);
@@ -88,8 +90,7 @@ public class Server extends Thread {
             }
         }
         catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Server failed to start.\n" +
-                    "Please, verify the port number used.\nThe application will be closed.");
+            JOptionPane.showMessageDialog(null, Configurator.getConfigurator().getProperty("message06"));
 
             System.exit(0);
         }

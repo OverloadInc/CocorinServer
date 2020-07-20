@@ -1,5 +1,7 @@
 package over.server;
 
+import over.config.Configurator;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -61,22 +63,22 @@ public class Monitor extends JFrame {
         lblStatus = new JLabel();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cocorin Server v1.0");
+        setTitle(Configurator.getConfigurator().getProperty("serverName"));
         setMinimumSize(new Dimension(600, 600));
         setName("frmMonitor");
         setJMenuBar(menuBar);
 
-        optExit.setText("Exit");
+        optExit.setText(Configurator.getConfigurator().getProperty("exitOption"));
         optExit.setName("optExit");
 
-        fileMenu.setText("File");
+        fileMenu.setText(Configurator.getConfigurator().getProperty("fileMenu"));
         fileMenu.setName("fileMenu");
         fileMenu.add(optExit);
 
-        optAbout.setText("About");
+        optAbout.setText(Configurator.getConfigurator().getProperty("aboutOption"));
         optAbout.setName("optAbout");
 
-        helpMenu.setText("Help");
+        helpMenu.setText(Configurator.getConfigurator().getProperty("helpMenu"));
         helpMenu.setName("helpMenu");
         helpMenu.add(optAbout);
 
@@ -94,7 +96,7 @@ public class Monitor extends JFrame {
         logPanel.setLayout(new BorderLayout());
         logPanel.add(scrollConsole, BorderLayout.CENTER);
 
-        lblStatus.setText("Powered by Overload Inc.");
+        lblStatus.setText(Configurator.getConfigurator().getProperty("lblOverload"));
         lblStatus.setName("lblStatus");
 
         statusPanel.setName("statusPanel");
@@ -136,10 +138,10 @@ public class Monitor extends JFrame {
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(2, 1));
-        panel.add(new JLabel("Connection port:"));
+        panel.add(new JLabel(Configurator.getConfigurator().getProperty("connectionPort")));
         panel.add(txtPort);
 
-        int result = JOptionPane.showConfirmDialog(this.mainPanel, panel,"Communication configuration", JOptionPane.OK_CANCEL_OPTION);
+        int result = JOptionPane.showConfirmDialog(this.mainPanel, panel, Configurator.getConfigurator().getProperty("communication"), JOptionPane.OK_CANCEL_OPTION);
 
         if (result == JOptionPane.OK_OPTION)
             defaultPort = txtPort.getText();
@@ -153,7 +155,7 @@ public class Monitor extends JFrame {
      * Displays a message when the server is running successfully.
      */
     void addInitServer() {
-        addLog("Server initialized", 2);
+        addLog(Configurator.getConfigurator().getProperty("serverInitialized"), 2);
     }
 
     /**
@@ -163,6 +165,8 @@ public class Monitor extends JFrame {
     public static void main(String... args) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+
+            Configurator.getConfigurator().initConfigurator();
         }
         catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Monitor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
