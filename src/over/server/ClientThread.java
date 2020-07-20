@@ -6,6 +6,12 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.LinkedList;
 
+/**
+ * <code>ClientThread</code> class provides a set of methods to control the chat operations for each connected client.
+ *
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class ClientThread extends Thread {
 
     /**
@@ -29,7 +35,7 @@ public class ClientThread extends Thread {
     private final Server server;
 
     /**
-     * Unique client id.
+     * Unique client <code>Id</code>.
      */
     private String idClient;
 
@@ -39,7 +45,7 @@ public class ClientThread extends Thread {
     private boolean isListening;
 
     /**
-     * ClientThread class constructor.
+     * <code>ClientThread</code> class constructor.
      * @param socket the socket to establish communication with the server.
      * @param server the target chat server.
      */
@@ -95,9 +101,8 @@ public class ClientThread extends Thread {
             try {
                 Object object = objectInputStream.readObject();
 
-                if(object instanceof LinkedList){
+                if(object instanceof LinkedList)
                     execute((LinkedList<String>)object);
-                }
             }
             catch (Exception e) {
                 System.err.println("Error on reading the current client's message.");
@@ -107,7 +112,12 @@ public class ClientThread extends Thread {
 
     /**
      * Performs specific tasks depending on the socket's input and output parameters.
-     * 1 indicates the transmitter client, 2 indicates the receiver client and 3 indicates a specific client message.
+     * <p>
+     * <code>1</code> indicates the transmitter client.
+     * <p>
+     * <code>2</code> indicates the receiver client.
+     * <p>
+     * <code>3</code> indicates a specific client message.
      * @param list the client list.
      */
     public void execute(LinkedList<String> list){
@@ -144,7 +154,7 @@ public class ClientThread extends Thread {
 
     /**
      * Notifies to each connected client the existence of a new incoming client.
-     * @param id the target client ID for establishing communication.
+     * @param id the target client <code>Id</code> for establishing communication.
      */
     private void acceptConnection(String id) {
         Server.incrementCorrelative();
@@ -158,7 +168,8 @@ public class ClientThread extends Thread {
 
         sendMessage(incomingData);
 
-        server.addLog("\nNew client: " + this.idClient);
+        server.addLog("\nUser connected: ", 2);
+        server.addLog("" + this.idClient, 1);
 
         LinkedList<String> newConnected = new LinkedList<>();
         newConnected.add("NEW_USER_CONNECTED");
@@ -169,8 +180,8 @@ public class ClientThread extends Thread {
     }
 
     /**
-     * Returns the unique client ID in the chat.
-     * @return the unique client ID.
+     * Returns the unique client <code>Id</code> in the chat.
+     * @return the unique client <code>Id</code>.
      */
     public String getIdClient() {
         return idClient;
@@ -184,7 +195,8 @@ public class ClientThread extends Thread {
         disconnectedClient.add("USER_DISCONNECTED");
         disconnectedClient.add(this.idClient);
 
-        server.addLog("\nClient \"" + this.idClient + "\" is disconnected.");
+        server.addLog("\nUser disconnected: ", 2);
+        server.addLog("" + this.idClient, 1);
 
         this.disconnect();
 

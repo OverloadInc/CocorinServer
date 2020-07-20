@@ -4,7 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Monitor class encapsulates a mechanism to record all historical data regarding connected clients interactions.
+ * <code>Monitor</code> class encapsulates a mechanism to record all historical data regarding connected clients interactions.
+ *
+ * @author Overload Inc.
+ * @version %I%, %G%
  */
 public class Monitor extends JFrame {
     private JMenu fileMenu;
@@ -19,11 +22,19 @@ public class Monitor extends JFrame {
     private JScrollPane scrollConsole;
     private JTextPane txtConsole;
     private FontEditor fontEditor;
+
+    /**
+     * The default port to use for the chat application.
+     */
     private final String DEFAULT_PORT="10101";
+
+    /**
+     * The server instance.
+     */
     private final Server server;
 
     /**
-     * Monitor class constructor
+     * <code>Monitor</code> class constructor.
      */
     public Monitor() {
         initComponents();
@@ -33,7 +44,7 @@ public class Monitor extends JFrame {
     }
 
     /**
-     * Initializes the Monitor class' components
+     * Initializes the <code>Monitor</code> class' components.
      */
     public void initComponents() {
         fontEditor = new FontEditor();
@@ -50,7 +61,7 @@ public class Monitor extends JFrame {
         lblStatus = new JLabel();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cocorin Server v0.1");
+        setTitle("Cocorin Server v1.0");
         setMinimumSize(new Dimension(600, 600));
         setName("frmMonitor");
         setJMenuBar(menuBar);
@@ -103,15 +114,19 @@ public class Monitor extends JFrame {
 
     /**
      * Adds a new message line to the monitor's console.
-     * @param text the new message line
+     * @param text the new message line.
+     * @param style the font style. <code>1</code> to <code>Simple</code> and <code>2</code> to <code>Bold</code>.
      */
-    void addLog(String text) {
-        fontEditor.setSimple(txtConsole, text);
+    void addLog(String text, int style) {
+        switch (style) {
+            case 1: fontEditor.setSimple(txtConsole, text); break;
+            case 2: fontEditor.setBold(txtConsole, text); break;
+        }
     }
 
     /**
-     * Builds a new window to configure the server's port
-     * @return the port number established to the server
+     * Builds a new window to configure the server's port.
+     * @return the port number established to the server.
      */
     private String getPort() {
         String defaultPort = DEFAULT_PORT;
@@ -138,11 +153,11 @@ public class Monitor extends JFrame {
      * Displays a message when the server is running successfully.
      */
     void addInitServer() {
-        fontEditor.setSimple(txtConsole, "Server initialized.");
+        addLog("Server initialized", 2);
     }
 
     /**
-     * Starts the Monitor execution.
+     * Starts the <code>Monitor</code> execution.
      * @param args initial input parameters.
      */
     public static void main(String... args) {

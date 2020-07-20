@@ -7,16 +7,32 @@ import javax.swing.text.StyleConstants;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * <code>FontEditor</code> class provides a mechanism to set the font style used in the chat console.
+ *
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class FontEditor {
 
+    /**
+     * The instance to set the font style.
+     */
     private SimpleAttributeSet attributeSet;
 
+    /**
+     * Class constructor.
+     */
     public FontEditor() {
         attributeSet = new SimpleAttributeSet();
     }
 
+    /**
+     * Sets the console's font to bold type.
+     * @param editor the <code>JTextPane</code> editor.
+     * @param text the text to modify.
+     */
     public void setBold(JTextPane editor, String text){
-
         StyleConstants.setBold(attributeSet, true);
 
         try {
@@ -29,8 +45,12 @@ public class FontEditor {
         }
     }
 
+    /**
+     * Sets the console's font to simple type.
+     * @param editor the <code>JTextPane</code> editor.
+     * @param text the text to modify.
+     */
     public void setSimple(JTextPane editor, String text){
-
         StyleConstants.setBold(attributeSet, false);
 
         try {

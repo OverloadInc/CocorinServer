@@ -5,6 +5,12 @@ import java.net.Socket;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 
+/**
+ * <code>Server</code> class allows controlling user connections.
+ *
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class Server extends Thread {
 
     /**
@@ -49,7 +55,7 @@ public class Server extends Thread {
 
     /**
      * Returns the correlative.
-     * @return the unique client ID.
+     * @return the unique client <code>Id</code>.
      */
     public static int getCorrelative() {
         return correlative;
@@ -74,7 +80,8 @@ public class Server extends Thread {
             while (true) {
                 Socket socket = serverSocket.accept();
 
-                System.out.println("New incoming connection: " + socket);
+                addLog("\nNew incoming connection: ", 2);
+                addLog("" + socket, 1);
 
                 ClientThread clientThread = new ClientThread(socket, this);
                 clientThread.start();
@@ -89,7 +96,7 @@ public class Server extends Thread {
     }
 
     /**
-     * Returns a list of connected client IDs.
+     * Returns a list of connected client <code>IDs</code>.
      * @return the list of connected users.
      */
     LinkedList<String> getConnectedUsers() {
@@ -103,8 +110,9 @@ public class Server extends Thread {
     /**
      * Adds a new line to the monitor's console.
      * @param text the message to display in the monitor's console.
+     * @param style the font style. <code>1</code> to <code>Simple</code> and <code>2</code> to <code>Bold</code>.
      */
-    void addLog(String text) {
-        monitor.addLog(text);
+    void addLog(String text, int style) {
+        monitor.addLog(text, style);
     }
 }
