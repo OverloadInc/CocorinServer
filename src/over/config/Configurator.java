@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
  * <code>Configurator</code> class allows establishing the default application's language.
  *
  * @author Overload Inc.
- * @version %I%, %G%
+ * @version 1.0, 09 Jan 2020
  */
 public class Configurator {
 

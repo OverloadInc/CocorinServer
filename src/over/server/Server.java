@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * <code>Server</code> class allows controlling user connections.
  *
  * @author Overload Inc.
- * @version %I%, %G%
+ * @version 1.0, 09 Jan 2020
  */
 public class Server extends Thread {
 

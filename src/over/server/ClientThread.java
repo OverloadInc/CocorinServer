@@ -12,7 +12,7 @@ import java.util.LinkedList;
  * <code>ClientThread</code> class provides a set of methods to control the chat operations for each connected client.
  *
  * @author Overload Inc.
- * @version %I%, %G%
+ * @version 1.0, 09 Jan 2020
  */
 public class ClientThread extends Thread {
 

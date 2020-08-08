@@ -11,7 +11,7 @@ import java.util.logging.Logger;
  * <code>FontEditor</code> class provides a mechanism to set the font style used in the chat console.
  *
  * @author Overload Inc.
- * @version %I%, %G%
+ * @version 1.0, 09 Jan 2020
  */
 public class FontEditor {
 

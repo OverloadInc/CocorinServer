@@ -9,7 +9,7 @@ import java.awt.*;
  * <code>Monitor</code> class encapsulates a mechanism to record all historical data regarding connected clients interactions.
  *
  * @author Overload Inc.
- * @version %I%, %G%
+ * @version 1.0, 09 Jan 2020
  */
 public class Monitor extends JFrame {
     private JMenu fileMenu;
